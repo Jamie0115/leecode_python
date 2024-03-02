@@ -1,21 +1,6 @@
 import random
-""""
-array = ["A", "B", "C"]
-
-array.append("D")
-print(array)
-
-array.insert(1,"D")
-print(array)
-print("count" + str(array.count("D")))
-
-array.remove("D")
-print(array)
-print("count" + str(array.count("D")))
-
-array.reverse()
-print(array)
-"""
+# 1. 剪刀石頭布
+# 2. 棒打老虎雞吃蟲
 
 # random.randint(a,b) => 從a~b之間隨機取一個整數
 """
@@ -24,7 +9,7 @@ me = int(input("[0]剪刀 [1]石頭 [2]布 : "))
 pc = random.randint(0, 2) # 0,1,2
 
 print("玩家：" + array[me])
-print("電腦：" + array[pc])
+print("電腦：" + array[pc])i
 
 if me == pc:
     print("平手")
