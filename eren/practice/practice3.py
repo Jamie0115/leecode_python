@@ -15,7 +15,7 @@ for char in string:
     code = ord(char)  # ASCII code
     if 65 <= code <= 90:
         index = (code + offset - 65) % 26
-        caesar_code += chr(index + 65)
+        caesar_code = caesar_code + chr(index + 65)
     elif 97 <= code <= 122:
         index = (code + offset - 97) % 26
         caesar_code += chr(index + 97)
