@@ -6,7 +6,20 @@ import random
 簡單來說就是主持人會幫你不斷縮小範圍直到被猜對為止
 """
 
-num = random.randint(1,100)
+target = random.randint(1, 100)
 
+top = 100
+bottom = 1
 while True:
-    num = int(input(""))
+    num = int(input(f"Input number ({bottom} ~ {top}) : "))
+    if num == target:
+        print("Congratulations!")
+        break
+    elif num > target:
+        print("too large")
+        top = num
+    elif num < target:
+        print("too less")
+        bottom = num
+    else:
+        pass
