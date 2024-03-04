@@ -1,5 +1,8 @@
 #  dictionary = {key, value}
-person = {"name": "Jamie", "age": 25}
+person = {
+    "name": "Jamie",
+    "age": 25
+}
 print(person["name"])
 
 person["name"] = "Eren"

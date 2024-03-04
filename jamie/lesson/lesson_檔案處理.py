@@ -1,5 +1,5 @@
-#  \n:執行  \t: TAB
-"""
+#  \n:換行  \t: TAB
+
 path = "C:/Users/funny/Documents/leecode_python/files/"
 f = open(path + "demo.txt", "w", encoding="utf-8")  # 開檔, "w"是寫入模式
 content = "Hello" + "\n" + "World"
@@ -15,3 +15,4 @@ try:
     print(content)
 except FileNotFoundError as e:
     print("File path is not found !!")
+"""
