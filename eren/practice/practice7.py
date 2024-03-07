@@ -1,5 +1,7 @@
+# 把person_List => 欲輸出的csv 字串
 def toContent(array):
-    rtn_Content = "編號,姓名,年齡" + "\n"
+    print(array)
+    rtn_Content = "NO.,Name,Age" + "\n"
     for item in array:
         rtn_Content = rtn_Content + item["no"] + "," + item["name"] + "," + item["age"] + "\n"
     return rtn_Content
