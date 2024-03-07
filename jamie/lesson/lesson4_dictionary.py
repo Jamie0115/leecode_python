@@ -4,6 +4,7 @@ person = {
     "age": 25
 }
 print(person["name"])
+print(person.get("name"))
 
 person["name"] = "Eren"
 print(person)

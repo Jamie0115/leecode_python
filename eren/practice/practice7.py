@@ -6,7 +6,7 @@ def toContent(array):
         rtn_Content = rtn_Content + item["no"] + "," + item["name"] + "," + item["age"] + "\n"
     return rtn_Content
 
-
+#1,Jamie,25\n2,Barry,30
 # input = break
 person_List = []
 no = 0

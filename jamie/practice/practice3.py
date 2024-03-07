@@ -1,5 +1,5 @@
 def data(array):
-    data_content = "編號,姓名,年齡" + "\n"
+    data_content = "No.,Name,Age" + "\n"
     for item in array:
         data_content = data_content + item["No"] + "," + item["Name"] + "," + item["Age"] + "\n"
     return data_content
