@@ -3,7 +3,9 @@
 .idea/leecode_python.iml
 .idea/developer-tools.xml
 .idea/csv-editor.xml
+
+# Mac .Ds_Store
+.DS_Store
+.idea/.DS_Store
 eren/.DS_Store
 jamie/.DS_Store
-.idea/.DS_Store
-.DS_Store
