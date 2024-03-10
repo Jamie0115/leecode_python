@@ -26,7 +26,7 @@ def getStudentList():
             "sex": split_row[1],
             "name": split_row[2],
             "age": int(split_row[3]),
-            "height:": float(split_row[4]),
+            "height": float(split_row[4]),
             "weight": float(split_row[5]),
             "score": int(split_row[6])
         })
