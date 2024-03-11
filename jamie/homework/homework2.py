@@ -50,11 +50,8 @@ def answer2(Student_list):
     count_map = {}
     for item in Student_list:
         name = item.get("name")
-        count = count_map.get(name)
-        if count is None:
-            count_map[item["name"]] = 1  # 如果這名字之前沒有出現過=1
-        else:
-            count_map[item["name"]] = count + 1
+        count = count_map.get(name, 0)
+        count_map[item["name"]] = count + 1
     the_names = []
     for key, value in count_map.items():
         if value == max(count_map.values()):
@@ -85,6 +82,56 @@ def answer3(Student_list):
 
 Student_list = getStudentList()
 
+
+# 4. 哪個年齡層人數最多? => 20~24 , 25~29 , 30~34 , 35~39
+def answer4(Student_list):
+    age_range = {
+        "person_20_24": 0,
+        "person_25_29": 0,
+        "person_30_34": 0,
+        "person_35_39": 0
+    }
+    for item in Student_list:
+        age = item.get("age")
+        if age < 25:
+            age_range["person_20_24"] += 1
+        elif 25 <= age < 30:
+            age_range["person_25_29"] += 1
+        elif 30 <= age < 35:
+            age_range["person_30_34"] += 1
+        else:
+            age_range["person_35_39"] += 1
+    count_20_24 = int(age_range["person_20_24"])
+    count_25_29 = int(age_range["person_25_29"])
+    count_30_34 = int(age_range["person_30_34"])
+    count_35_39 = int(age_range["person_35_39"])
+    max(count_20_24, count_25_29, count_30_34, count_35_39)
+    the_ages = []
+    for key, value in age_range.items():
+        if value == max(age_range.values()):
+            the_ages.append(key)
+    print("20~24: " + str(count_20_24))
+    print("25~29: " + str(count_25_29))
+    print("30~34: " + str(count_30_34))
+    print("35~39: " + str(count_35_39))
+    return the_ages, max(count_20_24, count_25_29, count_30_34, count_35_39)
+
+
+# 5. 0分跟100分的人名
+def answer5(Student_list):
+    list_100 = list()
+    list_0 = list()
+    for item in Student_list:
+        score = item.get("score")
+        if score == 0:
+            list_0.append(item.get("name")) # append =>是將元素加在串列最後面
+        elif score == 100:
+            list_100.append(item.get("name"))
+    score_100 = "score 100: " + str(list_100)
+    score_0 = "score 0: " + str(list_0)
+    return score_100, score_0
+
+
 # answer1
 # print(answer1(Student_list))
 
@@ -93,3 +140,10 @@ Student_list = getStudentList()
 
 # answer3
 # print(answer3(Student_list))
+
+# answer4
+# print(answer4(Student_list))
+
+# answer5
+print(answer5(Student_list))
+
