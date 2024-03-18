@@ -1,6 +1,3 @@
-import math
-
-
 # 1. primeNumList [] => 放質數的list
 # 2. range 2~n，每個數字除以primeNumList的每個質數，如果都不能整除，這個數字就是質數
 
