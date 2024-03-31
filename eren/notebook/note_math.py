@@ -22,7 +22,7 @@ print("math.factorial(5):", math.factorial(5))
 # math.ceil(a) : 天花板函數，傳回大於等於a的最小整數
 print("math.ceil(5.5):", math.ceil(5.5))
 
-# math.(a) : 地板函數，傳回小於等於a的最大整數
+# math.floor(a) : 地板函數，傳回小於等於a的最大整數
 print("math.floor(5.5):", math.floor(5.5))
 
 # math.gcd(a,b) : 計算a和b的最大公因數
