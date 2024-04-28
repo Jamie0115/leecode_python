@@ -1,4 +1,4 @@
-def isPalindrome(self, x):
+def isPalindrome(x):
     x = int()
     boo = False
     result = x
@@ -11,3 +11,6 @@ def isPalindrome(self, x):
     if temp == x:
         boo = True
     return boo
+
+
+print(isPalindrome(12545456))
