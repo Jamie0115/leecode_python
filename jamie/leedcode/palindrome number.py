@@ -1,3 +1,4 @@
+#  1. 判斷是否為回文數字
 def isPalindrome(x):
     x = int()
     boo = False
