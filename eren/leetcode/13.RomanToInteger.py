@@ -61,4 +61,6 @@ def romanToInt(s):
     return num
 
 
-print(romanToInt(input("Input:")))
+print(romanToInt("III"))
+print(romanToInt("LVIII"))
+print(romanToInt("MCMXCIV"))

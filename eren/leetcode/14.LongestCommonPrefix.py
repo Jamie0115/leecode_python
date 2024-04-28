@@ -1,11 +1,10 @@
-class Solution(object):
-    def longestCommonPrefix(self, strs):
-        """
-        :type strs: List[str]
-        :rtype: str
-        """
+def longestCommonPrefix(strs):
+    """
+    :type strs: List[str]
+    :rtype: str
+    """
+    return strs
 
 
-solution = Solution()
-print(solution.longestCommonPrefix(["flower", "flow", "flight"]))
-print(solution.longestCommonPrefix(["dog", "racecar", "car"]))
+print(longestCommonPrefix(["flower", "flow", "flight"]))
+print(longestCommonPrefix(["dog", "racecar", "car"]))
