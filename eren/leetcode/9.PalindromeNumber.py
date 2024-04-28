@@ -12,14 +12,14 @@ def isPalindrome(x):
             array.append(x % 10)
             x = x // 10
 
-        start = 0
-        end = len(array) - 1
-        while start < end:
-            if array[start] != array[end]:
+        leftIndex = 0
+        rightIndex = len(array) - 1
+        while leftIndex < rightIndex:
+            if array[leftIndex] != array[rightIndex]:
                 return False
             else:
-                start = start + 1
-                end = end - 1
+                leftIndex = leftIndex + 1
+                rightIndex = rightIndex - 1
         return True
 
 

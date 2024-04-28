@@ -3,6 +3,9 @@ def longestCommonPrefix(strs):
     :type strs: List[str]
     :rtype: str
     """
+    for s in strs[1:]:
+        print(s)
+
     return strs
 
 
