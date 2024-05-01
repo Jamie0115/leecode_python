@@ -54,3 +54,24 @@ def F(x, y):
     return k
 print(F(3, 1))
 """
+"""
+# 利用迴圈計算級數: 1 + x/2 + x^2/4 + x^3/8 + x^4/16 + x^5/32, x = 1.4
+x = 1
+sum = 0
+num = 1
+for i in range(0, 2):
+    sum += num
+    num = num * x/2
+print(sum)
+"""
+# 公式:1 - x^2 + x^4/2! - x^6/3! + x^8/4! - x^10/5! + x^12/6!
+x = 1
+sum = 0
+num = 1
+factor = 1
+for i in range(0, 3):
+    print(i)
+    factor *= (i + 1)
+    sum += num
+    num = num * -x**2/factor
+print(sum)
