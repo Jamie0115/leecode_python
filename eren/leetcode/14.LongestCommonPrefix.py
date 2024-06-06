@@ -4,7 +4,7 @@ def longestCommonPrefix(strs):
     :rtype: str
     """
     if len(strs) == 0:
-        return ""
+        return " "
     elif len(strs) == 1:
         return strs[0]
     else:
