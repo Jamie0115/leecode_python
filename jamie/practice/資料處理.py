@@ -1,17 +1,9 @@
-import pandas as pd
-
-# 讀取CSV檔案
-df1 = pd.read_csv('test.csv')
-df2 = pd.read_csv('test 2.csv')
-
-# 確認兩個DataFrame有相同的結構
-if df1.shape == df2.shape and all(df1.columns == df2.columns):
-    # 數據相減
-    df_result = df1 - df2
-
-    # 將結果寫入新的CSV檔
-    df_result.to_csv('result.csv', index=False)
-else:
-    print("兩個CSV檔案的結構不同，無法進行相減操作。")
-
-print("數據相減操作完成，結果已寫入 'result.csv'")
+import csv
+test1_path = "C:/Users/funny/Desktop/test1.csv"
+test2_path = "C:/Users/funny/Desktop/test2.csv"
+# 讀取 file1.csv
+with open(test1_path, mode='r', newline='') as test1:
+    reader1 = csv.reader(test1_path)
+    next(reader1)  # 跳過標題行
+    row1 = next(reader1)  # 第一筆資料
+    value1 = int(row1[1])  # 取得第一筆資料的 Value 欄位值
