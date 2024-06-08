@@ -2,8 +2,8 @@ TOTAL_ROW = 288
 BUFFER_FILENAME = 'buffer'
 TARGET_FILENAME = 'results'
 FAM_FILENAME_LIST = ['buffer', 'FAM_2.5', 'FAM_5', 'FAM_10']
-LED_COUNT = 2
-path = '/Users/erenwu/Documents/JamieDemo'
+LED_COUNT = 3
+path = 'C:/Users/funny/Desktop/result'
 
 
 def readCsv(folder, fileName):

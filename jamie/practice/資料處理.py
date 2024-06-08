@@ -1,6 +1,7 @@
 import csv
 test1_path = "C:/Users/funny/Desktop/test1.csv"
 test2_path = "C:/Users/funny/Desktop/test2.csv"
+result_path = '/path/to/directory3/result.csv'
 # 讀取 file1.csv
 with open(test1_path, mode='r', newline='') as test1:
     reader1 = csv.reader(test1_path)
