@@ -1,51 +1,62 @@
-BUFFER_FILENAME = "buffer"
-TARGET_FILENAME = "results"
-FILE_FAM_FILENAME_LIST = ['FAM_2.5', 'FAM_5', 'FAM_10']
-path = "/Users/erenwu/Documents/file2"
+TOTAL_ROW = 288
+BUFFER_FILENAME = 'buffer'
+TARGET_FILENAME = 'results'
+FAM_FILENAME_LIST = ['buffer', 'FAM_2.5', 'FAM_5', 'FAM_10']
+LED_COUNT = 2
+path = '/Users/erenwu/Documents/JamieDemo'
 
 
-def readCsv(fileName):
+def readCsv(folder, fileName):
+    folder = "" if folder == "" else ("/" + folder)
     try:
-        readFile = open(path + "/" + fileName + ".csv", "r", encoding="big5")
+        readFile = open(path + folder + "/" + fileName + ".csv", "r", encoding="big5")
         content = readFile.read()
         rows = content.split("\n")
-        rowList = list()
+        rowMap = dict()
         for row in rows:
             if "," in row:
                 columns = row.split(",")
-                rowList.append({
-                    "index": int(columns[0]),
-                    "value": int(columns[1])
-                })
-        return rowList
+                rowMap[int(columns[0])] = int(columns[1])
+        return rowMap
     except FileNotFoundError as e:
         print("File path is not found !!")
 
 
-def writeCsv(content, fileName):
+def writeCsv(lines):
     try:
-        writeFile = open(path + "/" + fileName + ".csv", "w", encoding="big5")
-        writeFile.write(content)
+        output = ""
+        for line in lines:
+            output += line
+            output += "\n"
+        writeFile = open(path + "/" + TARGET_FILENAME + ".csv", "w", encoding="big5")
+        writeFile.write(output)
     except FileNotFoundError as e:
         print("File path is not found !!")
 
 
-resultMap = dict()
-for target in FILE_FAM_FILENAME_LIST:
-    resultMap[target] = readCsv(target)
+def appendData(resultLine, dataMap, bufferMap):
+    for row in dataMap:
+        resultLine[row] = resultLine[row] + str(dataMap.get(row) - bufferMap.get(row)) + ","
 
-output = "Index,buffer," + ",".join(FILE_FAM_FILENAME_LIST) + "\n"
-for buffer in readCsv(BUFFER_FILENAME):
-    bufferIndex = buffer.get("index")
-    bufferValue = buffer.get("value")
-    output += str(bufferIndex) + ","
-    output += str(0) + ","
 
-    for fam in FILE_FAM_FILENAME_LIST:
-        list = resultMap.get(fam)
-        famValue = list[bufferIndex - 1].get("value")
-        output += str(famValue - bufferValue) + ","
+resultLine = list()
+resultLine.append("Row,")
+for i in range(TOTAL_ROW + 1):
+    resultLine.append(str(i) + ",")
 
-    output += "\n"
+for led in range(LED_COUNT + 1):
+    if led == 0:
+        continue
+    # 先讀取buffer檔
+    bufferMap = readCsv(str(led), BUFFER_FILENAME)
 
-writeCsv(output, TARGET_FILENAME)
+    # 再讀取該LED的每個FAM檔案
+    for fam in FAM_FILENAME_LIST:
+        title = fam + "_" + str(led)
+        resultLine[0] = resultLine[0] + title + ","
+
+        famMap = readCsv(str(led), fam)
+        appendData(resultLine, famMap, bufferMap)
+
+
+writeCsv(resultLine)
