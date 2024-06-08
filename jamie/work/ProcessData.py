@@ -2,9 +2,9 @@ import sys
 
 
 def readCsv(path, folder, fileName):
-    folderPath = path + ("" if folder == "" else ("/" + folder))
+    folderPath = path + "/" + folder
     try:
-        readFile = open(folderPath + "/" + fileName + ".csv", "r", encoding="big5")
+        readFile = open(folderPath + "/" + fileName + ".csv", "r", encoding="big5")  # "r"代表讀取的意思
         content = readFile.read()
         rows = content.split("\n")
         rowMap = dict()
@@ -27,7 +27,7 @@ def writeCsv(path, folder, fileName, lines):
         for line in lines:
             output += line
             output += "\n"
-        writeFile = open(folderPath + "/" + fileName + ".csv", "w", encoding="big5")
+        writeFile = open(folderPath + "/" + fileName + ".csv", "w", encoding="big5")  # "w"代表寫的意思
         writeFile.write(output)
     except FileNotFoundError:
         print("File path is not found !!")

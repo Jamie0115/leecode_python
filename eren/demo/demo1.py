@@ -3,7 +3,7 @@ import random
 
 def getBoyNames():
     try:
-        file1 = open("../../resource/boy.txt", "r", encoding="utf-8")
+        file1 = open("../../resource/boy.txt", "r", encoding="utf-8")  # "r"代表讀取的意思
         content1 = file1.read()
         file1.close()
         return content1.split(",")
