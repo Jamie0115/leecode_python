@@ -1,15 +1,10 @@
-TOTAL_ROW = 288
-BUFFER_FILENAME = 'buffer'
-TARGET_FILENAME = 'results'
-FAM_FILENAME_LIST = ['buffer', 'FAM_2.5', 'FAM_5', 'FAM_10']
-LED_COUNT = 3
-path = 'C:/Users/funny/Desktop/result'
+import sys
 
 
-def readCsv(folder, fileName):
-    folder = "" if folder == "" else ("/" + folder)
+def readCsv(path, folder, fileName):
+    folderPath = path + ("" if folder == "" else ("/" + folder))
     try:
-        readFile = open(path + folder + "/" + fileName + ".csv", "r", encoding="big5")
+        readFile = open(folderPath + "/" + fileName + ".csv", "r", encoding="big5")
         content = readFile.read()
         rows = content.split("\n")
         rowMap = dict()
@@ -25,21 +20,31 @@ def readCsv(folder, fileName):
         print("File path is not found !!")
 
 
-def writeCsv(lines):
+def writeCsv(path, folder, fileName, lines):
+    folderPath = path + ("" if folder == "" else ("/" + folder))
     try:
         output = ""
         for line in lines:
             output += line
             output += "\n"
-        writeFile = open(path + "/" + TARGET_FILENAME + ".csv", "w", encoding="big5")
+        writeFile = open(folderPath + "/" + fileName + ".csv", "w", encoding="big5")
         writeFile.write(output)
     except FileNotFoundError:
         print("File path is not found !!")
 
 
-def appendData(resultLine, dataMap, bufferMap):
-    for row in dataMap:
-        resultLine[row] = resultLine[row] + str(dataMap.get(row) - bufferMap.get(row)) + ","
+TOTAL_ROW = 288
+BUFFER_FILENAME = 'buffer'
+TARGET_FILENAME = 'results'
+
+sysList = sys.argv[1:]
+FILE_PATH = sysList[0]
+LED_COUNT = int(sysList[1])
+FAM_FILENAME_LIST = list()
+
+FAM_FILENAME_LIST.append(BUFFER_FILENAME)
+for fanFileName in sysList[2].split(","):
+    FAM_FILENAME_LIST.append(fanFileName)
 
 
 resultLine = list()
@@ -51,15 +56,17 @@ for led in range(LED_COUNT + 1):
     if led == 0:
         continue
     # 先讀取buffer檔
-    bufferMap = readCsv(str(led), BUFFER_FILENAME)
+    bufferMap = readCsv(FILE_PATH, str(led), BUFFER_FILENAME)
 
     # 再讀取該LED的每個FAM檔案
     for fam in FAM_FILENAME_LIST:
         title = fam + "_" + str(led)
         resultLine[0] = resultLine[0] + title + ","
 
-        famMap = readCsv(str(led), fam)
-        appendData(resultLine, famMap, bufferMap)
+        famMap = readCsv(FILE_PATH, str(led), fam)
+        for famRow in famMap:
+            resultLine[famRow] = resultLine[famRow] + str(famMap.get(famRow) - bufferMap.get(famRow)) + ","
 
 
-writeCsv(resultLine)
+writeCsv(FILE_PATH, "", TARGET_FILENAME, resultLine)
+print("Process Data Successfully")
