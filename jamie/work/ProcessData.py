@@ -18,7 +18,7 @@ def readCsv(folder, fileName):
                 columns = row.split(",")
                 rowMap[int(columns[0])] = int(columns[1])
         return rowMap
-    except FileNotFoundError as e:
+    except FileNotFoundError:
         print("File path is not found !!")
 
 
@@ -30,7 +30,7 @@ def writeCsv(lines):
             output += "\n"
         writeFile = open(path + "/" + TARGET_FILENAME + ".csv", "w", encoding="big5")
         writeFile.write(output)
-    except FileNotFoundError as e:
+    except FileNotFoundError:
         print("File path is not found !!")
 
 
