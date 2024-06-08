@@ -16,7 +16,10 @@ def readCsv(folder, fileName):
         for row in rows:
             if "," in row:
                 columns = row.split(",")
-                rowMap[int(columns[0])] = int(columns[1])
+                key = columns[0]
+                value = columns[1]
+                if key.isdigit():
+                    rowMap[int(key)] = int(value)
         return rowMap
     except FileNotFoundError:
         print("File path is not found !!")

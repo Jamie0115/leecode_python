@@ -26,6 +26,7 @@ for led in range(LED_COUNT + 1):
         continue
     for fam in FAM_FILENAME_LIST:
         resultLines = list()
+        resultLines.append(",average")
         for row in range(TOTAL_ROW + 1):
             if row == 0:
                 continue
