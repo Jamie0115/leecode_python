@@ -10,12 +10,12 @@ def getWavelengthDict(rowData):
         B3 = float(rowData['B3'])
         B4 = float(rowData['B4'])
         B5 = float(rowData['B5'])
-        wavelength = (A0
-                      + (B1 * pixel)
-                      + (B2 * pixel ** 2)
-                      + (B3 * pixel ** 3)
-                      + (B4 * pixel ** 4)
-                      + (B5 * pixel ** 5))
+        wavelength = A0
+        wavelength += B1 * pixel
+        wavelength += B2 * (pixel ** 2)
+        wavelength += B3 * (pixel ** 3)
+        wavelength += B4 * (pixel ** 4)
+        wavelength += B5 * (pixel ** 5)
         returnDict[pixel] = wavelength
     return returnDict
 
