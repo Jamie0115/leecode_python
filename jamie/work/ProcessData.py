@@ -25,7 +25,7 @@ def writeCsv(path, folder, fileName, lines):
     try:
         output = ""
         for line in lines:
-            output += line
+            output += (line[:-1] if line[-1] == "," else line)
             output += "\n"
         writeFile = open(folderPath + "/" + fileName + ".csv", "w", encoding="big5")  # "w"代表寫的意思
         writeFile.write(output)
