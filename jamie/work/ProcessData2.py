@@ -4,13 +4,18 @@ import csv
 def getWavelengthDict(rowData):
     returnDict = dict()
     for pixel in range(1, 289):
-        a0 = float(rowData['A0'])
-        b1 = float(rowData['B1'])
-        b2 = float(rowData['B2'])
-        b3 = float(rowData['B3'])
-        b4 = float(rowData['B4'])
-        b5 = float(rowData['B5'])
-        wavelength = a0 + (b1 * pixel) + (b2 * pixel ** 2) + (b3 * pixel ** 3) + (b4 * pixel ** 4) + (b5 * pixel ** 5)
+        A0 = float(rowData['A0'])
+        B1 = float(rowData['B1'])
+        B2 = float(rowData['B2'])
+        B3 = float(rowData['B3'])
+        B4 = float(rowData['B4'])
+        B5 = float(rowData['B5'])
+        wavelength = (A0
+                      + (B1 * pixel)
+                      + (B2 * pixel ** 2)
+                      + (B3 * pixel ** 3)
+                      + (B4 * pixel ** 4)
+                      + (B5 * pixel ** 5))
         returnDict[pixel] = wavelength
     return returnDict
 
