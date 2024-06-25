@@ -15,6 +15,7 @@ def readCsv(path, folder, fileName):
                 value = columns[1]
                 if key.isdigit():
                     rowMap[int(key)] = int(value)
+        readFile.close()
         return rowMap
     except FileNotFoundError:
         print("File path is not found !!")
@@ -29,6 +30,7 @@ def writeCsv(path, folder, fileName, lines):
             output += "\n"
         writeFile = open(folderPath + "/" + fileName + ".csv", "w", encoding="big5")  # "w"代表寫的意思
         writeFile.write(output)
+        writeFile.close()
     except FileNotFoundError:
         print("File path is not found !!")
 

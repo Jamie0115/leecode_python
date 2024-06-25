@@ -35,12 +35,14 @@ outputLines = list()
 outputLines.append("pixel,")
 for pixel in range(1, 289):
     outputLines.append(str(pixel) + ",")
+print(outputLines)
 
 for modelName in models:
     model = models.get(modelName)
     outputLines[0] = outputLines[0] + modelName + ","
     for pixel in range(1, 289):
         outputLines[pixel] = outputLines[pixel] + str(model.get(pixel)) + ","
+print(model)
 
 with open(FILE_PATH + "/result.csv", "w") as resultFile:
     output = ""
