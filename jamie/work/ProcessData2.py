@@ -26,7 +26,7 @@ MODEL_COLUMN = "光譜儀型號"
 
 models = dict()
 with open(FILE_PATH + "/" + FILE_NAME, "r") as csvFile:
-    reader = csv.DictReader(csvFile)
+    reader = csv.DictReader(csvFile)    # 利用DictReader讀取 CSV 檔案
     for row in reader:
         modelName = row[MODEL_COLUMN]
         models[modelName] = getWavelengthDict(row)
