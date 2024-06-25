@@ -24,7 +24,7 @@ while True:
     }
     person_List.append(person)
 
-path = "/Users/ericwu/Documents/workspace/demo/file/"
+path = "/Users/ericwu/Documents/workspace/demo/files/"
 f = open(path + "demo.csv", "w", encoding="utf-8")  # 開檔, "w"是寫入模式
 content = toContent(person_List)  # 呼叫 toContent 方法
 f.write(content)
