@@ -1,17 +1,4 @@
-class TestScore():
-    def __init__(self, project: str, number: int, score: int):
-        self.__project = project
-        self.__number = number
-        self.__score = score
-
-    def getProject(self) -> str:
-        return self.__project
-
-    def getNumber(self) -> int:
-        return self.__number
-
-    def getScore(self) -> int:
-        return self.__score
+from MyClass import TestScore
 
 
 def read(path: str, folder: str, filename: str):
@@ -42,7 +29,9 @@ for i in range(1, 17):
         for row in rows:
             column = row.split(",")
             if column[0] is not None and column[0].isdigit():
-                projectScoreList.append(TestScore(p, int(column[0]), int(column[1])))
+                # 創建物件TestScore塞入屬性
+                myTestScore = TestScore(p, int(column[0]), int(column[1]))
+                projectScoreList.append(myTestScore)
         classScoreDict[p] = projectScoreList
     all_class_score.append(classScoreDict)
 
