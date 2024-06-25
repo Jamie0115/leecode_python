@@ -1,17 +1,30 @@
-import random
+class Wavelength():
+    def __init__(self, a0: float, b1: float, b2: float, b3: float, b4: float, b5: float):
+        self.__a0 = a0
+        self.__b1 = b1
+        self.__b2 = b2
+        self.__b3 = b3
+        self.__b4 = b4
+        self.__b5 = b5
 
-projects = ["chinese", "english", "math"]
-path = "./files"
+    def getIntensity(self, pixel: int):
+        return self.__calculate(pixel)
 
-for i in range(17):
-    for project in projects:
-        lines = list()
-        lines.append("No., Score")
-        for no in range(1, 41):
-            lines.append(str(no) + "," + str(random.randint(0,100)))
-        the_dir = path + "/" + str(i) + "/" + project + ".csv"
-        print(the_dir)
-        with open(the_dir, "w") as f:
-            output = "\n".join(lines)
-            print(output)
-            f.write(output)
+    def __calculate(self, pixel: int):
+        return (self.__a0
+                + self.__b1 * pixel
+                + self.__b2 * pixel**2
+                + self.__b3 * pixel**3
+                + self.__b4 * pixel**4
+                + self.__b5 * pixel**5)
+
+
+def run():
+    a = Wavelength(100.2, 200.5, 234, 100.4, 66.6, 99.8)
+    for i in range(1, 11):
+        print(a.getIntensity(i))
+
+
+run()
+
+
