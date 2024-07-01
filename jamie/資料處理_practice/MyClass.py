@@ -1,4 +1,4 @@
-class TestScore():
+class TestScore:
     def __init__(self, project: str, number: int, score: int):
         self.__project = project
         self.__number = number
