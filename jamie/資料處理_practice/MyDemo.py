@@ -1,4 +1,4 @@
-from MyClass import TestScore
+from MyClass import TestScore, ProjectScore, ClassScore
 
 
 def read(path: str, folder: str, filename: str):
@@ -20,19 +20,22 @@ FILE_PATH = "./files"
 all_class_score = list()
 # for each 班級
 for i in range(1, 17):
-    classScoreDict = dict()
+    classScore = ClassScore(str(i))
     # for each 科目
     for p in projects:
+        projectScore = ProjectScore(p)
         rows = read(FILE_PATH, str(i), p)
-        projectScoreList = list()
         # for each 每位同學
         for row in rows:
             column = row.split(",")
             if column[0] is not None and column[0].isdigit():
                 # 創建物件TestScore塞入屬性
-                myTestScore = TestScore(p, int(column[0]), int(column[1]))
-                projectScoreList.append(myTestScore)
-        classScoreDict[p] = projectScoreList
-    all_class_score.append(classScoreDict)
+                projectScore.addScore(TestScore(int(column[0]), int(column[1])))
+        classScore.addProject(projectScore)
+    all_class_score.append(classScore)
 
-print()
+
+# -------------------------------------------------------------------------
+for classScore in all_class_score:
+    if classScore.name == "1":
+        print(classScore.getProjectAverageScore("math"))

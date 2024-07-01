@@ -1,3 +1,7 @@
+import random
+
+
+# 定義每張考卷的class
 class TestScore:
     def __init__(self, number: int, score: int):
         self.number = number
@@ -13,21 +17,11 @@ class ProjectScore:
     def addScore(self, t: TestScore):
         self.scoreList.append(t)
 
-    def getAllScoreList(self):
-        li = list()
-        for o in self.scoreList:
-            li.append(o.score)
-        return li
-
     def getAverageScore(self):
-        totalScore = sum(self.getAllScoreList())
+        totalScore = 0
+        for o in self.scoreList:
+            totalScore += o.score
         return totalScore / len(self.scoreList)
-
-    def getMaxScore(self):
-        return max(self.getAllScoreList())
-
-    def getMinScore(self):
-        return min(self.getAllScoreList())
 
 
 class ClassScore:
@@ -38,6 +32,15 @@ class ClassScore:
     def addProject(self, projectScore: ProjectScore):
         self.projectDict[projectScore.project] = projectScore
 
-    def getProjectAverageScore(self, project: str):
-        projectScore = self.projectDict.get(project)
-        return projectScore.getAverageScore() if projectScore is not None else 0
+
+math = ProjectScore("Math")
+for i in range(1, 41):
+    math.addScore(TestScore(i, random.randint(1, 100)))
+
+print(math.getAverageScore())
+
+aClass = ClassScore("A")
+aClass.addProject(math)
+
+
+
