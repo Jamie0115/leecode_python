@@ -62,5 +62,6 @@ for i in range(1, 17):
 # -------------------------------------------------------------------------
 for classScore in all_class_score:
     if classScore.name == "1":
-        print(classScore.getProjectAverageScore("math"))
+        projectScore = classScore.getProjectScore("math")
+        print(projectScore)
 

@@ -34,8 +34,15 @@ class ClassScore:
 
 
 math = ProjectScore("Math")
+projectScoreList = list()
 for i in range(1, 41):
-    math.addScore(TestScore(i, random.randint(1, 100)))
+    testScore = TestScore(i, random.randint(1, 100))
+    projectScoreList.append(testScore)
+    math.addScore(testScore)
+
+    # projectScoreList.append(TestScore(i, random.randint(1, 100)))
+    # math.addScore(testScore)
+
 
 print(math.getAverageScore())
 

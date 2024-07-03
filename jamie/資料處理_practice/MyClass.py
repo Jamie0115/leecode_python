@@ -13,21 +13,21 @@ class ProjectScore:
     def addScore(self, t: TestScore):
         self.scoreList.append(t)
 
-    def getAllScoreList(self):
+    def __getAllScoreList(self):
         li = list()
         for o in self.scoreList:
             li.append(o.score)
         return li
 
     def getAverageScore(self):
-        totalScore = sum(self.getAllScoreList())
+        totalScore = sum(self.__getAllScoreList())
         return totalScore / len(self.scoreList)
 
     def getMaxScore(self):
-        return max(self.getAllScoreList())
+        return max(self.__getAllScoreList())
 
     def getMinScore(self):
-        return min(self.getAllScoreList())
+        return min(self.__getAllScoreList())
 
 
 class ClassScore:
@@ -37,6 +37,9 @@ class ClassScore:
 
     def addProject(self, projectScore: ProjectScore):
         self.projectDict[projectScore.project] = projectScore
+
+    def getProjectScore(self, project: str):
+        return self.projectDict.get(project)
 
     def getProjectAverageScore(self, project: str):
         projectScore = self.projectDict.get(project)
