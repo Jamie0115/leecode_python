@@ -55,18 +55,36 @@ b.introduce()
 # 獲取學生資訊（get_student_info），可以獲取該學生的所有資訊，包括學號、姓名、年級、科目成績和平均成績。
 
 class Student:
-    def __init__(self, studentID: int, name: str, grade: int, subjectScore: float):
-        self.studentID = studentID
-        self.name = name
-        self.grade = grade
-        self.__subjectScore = subjectScore
+    def __init__(self, studentID: int, name: str, grade: int):
+        self.__studentID = studentID
+        self.__name = name
+        self.__grade = grade
+        self.__subjectScoreDict = {}
 
-class SubjectScore:
-    def __init__(self, subject: str, subjectScore: float):
-        super().__init__(subjectScore)
-        self.subject = subject
-        self.scoreList = list()
+    # 新增一科成績（add_subject_score）
+    def addSubjectScore(self, subject: str, score: float):
+        self.__subjectScoreDict[subject] = score
 
-    def addScore(self, t: Student):
-        self.scoreList.append(t)
+    # 查詢全部科目成績（get_all_subject_scores）
+    def getAllSubjectScores(self):
+        return self.__subjectScoreDict
+
+    # 計算平均成績（calculate_average_score）
+    def calculateAverageScore(self):
+        totalScore = sum(self.__subjectScoreDict.values())
+        return totalScore / len(self.__subjectScoreDict)
+
+    # 獲取學生資訊（get_student_info）
+    def getStudentInfo(self):
+        return ("學號: {studentID}, 姓名: {Name}, 年級: {Grade}, 科目成績: {subjectScore}, 平均成績: {averageScore}"
+                .format(studentID = self.__studentID, Name = self.__name, Grade = self.__grade, subjectScore = self.__subjectScoreDict, averageScore = self.calculateAverageScore()))
+
+a = Student(1, "Jamie", 3)
+a.addSubjectScore("Math", 90.5)
+a.addSubjectScore("English", 60.5)
+
+print(a.getAllSubjectScores())
+print(a.calculateAverageScore())
+print(a.getStudentInfo())
+
 
