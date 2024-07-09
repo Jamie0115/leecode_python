@@ -43,25 +43,48 @@ class BankAccount:
                 .format(target_account = target_account, amount = amount, balance = self.__balance))
 
 
-bank = BankAccount("123456789000000", "Jamie", 100000)
+bank = BankAccount("123456789000000", "Jamie", 1000)
 while True:
-    mode = int(input("檢查餘額:0, 存款:1, 提款:2, 帳戶訊息:3, 轉帳:4, 離開:5   請輸入:"))
-    if mode == 0:
-        print("目前存款餘額:" + str(bank.balance()))
-    elif mode == 1:
-        deposit_amount = int(input("請輸入存入的金額:"))
-        print("存入後的存款金額:", bank.deposit(deposit_amount))
-    elif mode == 2:
-        withdraw_amount = int(input("請輸入欲提款的金額:"))
-        print("提款後的餘額:", bank.withdraw(withdraw_amount))
-    elif mode == 3:
-        print("帳戶信息:", bank.accountInfo())
-    elif mode == 4:
-        target_account_number = input("轉帳帳戶號碼: ")
-        target_account_amount = int(input("轉帳金額: "))
-        print(bank.transfer(target_account_number, target_account_amount))
-    elif mode == 5:
-        print("謝謝,請取卡~")
-        break
-    else:
-        print("執行錯誤，請輸入正確數字")
+    mode = input("檢查餘額:0 存款:1 提款:2 帳戶訊息:3 轉帳:4 離開:5\n"
+                 "請輸入:\n")
+
+    match mode:
+        case "0":
+            print("目前存款餘額:" + str(bank.balance()))
+        case "1":
+            deposit_amount = int(input("請輸入存入的金額:"))
+            print("存入後的存款金額:", bank.deposit(deposit_amount))
+        case "2":
+            withdraw_amount = int(input("請輸入欲提款的金額:"))
+            print("提款後的餘額:", bank.withdraw(withdraw_amount))
+        case "3":
+            print("帳戶信息:", bank.accountInfo())
+        case "4":
+            target_account_number = input("轉帳帳戶號碼: ")
+            target_account_amount = int(input("轉帳金額: "))
+            print(bank.transfer(target_account_number, target_account_amount))
+        case "5":
+            print("謝謝,請取卡~")
+            break
+        case _:
+            print("執行錯誤，請輸入正確數字")
+
+    # if mode == 0:
+    #     print("目前存款餘額:" + str(bank.balance()))
+    # elif mode == 1:
+    #     deposit_amount = int(input("請輸入存入的金額:"))
+    #     print("存入後的存款金額:", bank.deposit(deposit_amount))
+    # elif mode == 2:
+    #     withdraw_amount = int(input("請輸入欲提款的金額:"))
+    #     print("提款後的餘額:", bank.withdraw(withdraw_amount))
+    # elif mode == 3:
+    #     print("帳戶信息:", bank.accountInfo())
+    # elif mode == 4:
+    #     target_account_number = input("轉帳帳戶號碼: ")
+    #     target_account_amount = int(input("轉帳金額: "))
+    #     print(bank.transfer(target_account_number, target_account_amount))
+    # elif mode == 5:
+    #     print("謝謝,請取卡~")
+    #     break
+    # else:
+    #     print("執行錯誤，請輸入正確數字")
