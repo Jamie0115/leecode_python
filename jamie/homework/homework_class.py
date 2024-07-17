@@ -42,7 +42,6 @@ class BankAccount:
         return ("轉帳帳戶: {target_account}, 轉帳金額: {amount}, 帳戶餘額: {balance}"
                 .format(target_account = target_account, amount = amount, balance = self.__balance))
 
-
 bank = BankAccount("123456789000000", "Jamie", 100000)
 while True:
     mode = int(input("檢查餘額:0, 存款:1, 提款:2, 帳戶訊息:3, 轉帳:4, 離開:5   請輸入:"))
