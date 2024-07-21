@@ -20,7 +20,7 @@ class BankAccount:
 
     def accountInfo(self):
         return ("帳戶號碼: {accountNumber}, 帳戶名字: {accountName}, 帳戶餘額: {balance}"
-                .format(accountNumber = self.__accountNumber, accountName = self.__accountName, balance = self.__balance))
+                .format(accountNumber=self.__accountNumber, accountName=self.__accountName, balance=self.__balance))
 
     # 轉賬（transfer），將款項從一個帳戶轉移到另一個帳戶
     def transfer(self, target_account: str, amount: int) -> str:
@@ -32,4 +32,13 @@ class BankAccount:
 
         self.__balance -= amount
         return ("轉帳帳戶: {target_account}, 轉帳金額: {amount}, 帳戶餘額: {balance}"
-                .format(target_account = target_account, amount = amount, balance = self.__balance))
+                .format(target_account=target_account, amount=amount, balance=self.__balance))
+
+    def accountCsvLine(self):
+        return ",".join([str(self.__accountNumber), str(self.__accountName)])
+
+    def getAccountNumber(self):
+        return self.__accountNumber
+
+    def getBalance(self):
+        return self.__balance
